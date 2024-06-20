@@ -1,25 +1,33 @@
 import React, { useEffect, useState } from 'react'
 import { Container, PostCard } from '../components'
 import databaseServices from '../appwrite/database'
+import { Query } from 'appwrite';
+import { useSelector } from 'react-redux';
 
 const AllPosts = () => {
     const [posts, setPosts] = useState([]);
     const [fetchError, setFetchError] = useState(false);
     const [loading, setLoading] = useState(true);
+    const userId = useSelector(state => state.auth.userData?.$id);
 
     useEffect(() => {
-        databaseServices.getPosts([])
-            .then((posts) => {
-                if (posts) {
-                    setPosts(posts.documents)
-                }
-                setLoading(false);
-            })
-            .catch((err) => {
-                console.log("AllPosts:: getPost :: Error: ", err.message);
-                setFetchError(true);
-            })
-            .finally(() => setLoading(false));
+        if (userId) {
+            databaseServices.getPosts([Query.equal("userId", userId)])
+                .then((posts) => {
+                    if (posts) {
+                        setPosts(posts.documents)
+                    }
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    console.log("AllPosts:: getPost :: Error: ", err.message);
+                    setFetchError(true);
+                })
+                .finally(() => setLoading(false));
+        } else {
+            setLoading(false);
+            setFetchError(true);
+        }
     }, []);
 
 

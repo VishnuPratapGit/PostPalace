@@ -42,7 +42,7 @@ function Header() {
             <div className="header-logo">
                 <Logo className=" max-w-40" background="white" />
             </div>
-            <div className="flex justify-between items-center w-3/5 overflow-hidden">
+            <div className="flex justify-between items-center w-3/5 overflow-hidden p-1">
                 {navItems.map((links) => links.active ? (
                     <NavLink
                         key={links.name}
