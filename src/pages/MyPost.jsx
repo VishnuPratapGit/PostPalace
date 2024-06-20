@@ -4,7 +4,7 @@ import databaseServices from '../appwrite/database'
 import { Query } from 'appwrite';
 import { useSelector } from 'react-redux';
 
-const AllPosts = () => {
+const MyPost = () => {
     const [posts, setPosts] = useState([]);
     const [fetchError, setFetchError] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -63,4 +63,4 @@ const AllPosts = () => {
     )
 }
 
-export default AllPosts
+export default MyPost
