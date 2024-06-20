@@ -4,32 +4,51 @@ import databaseServices from '../appwrite/database'
 
 const AllPosts = () => {
     const [posts, setPosts] = useState([]);
+    const [fetchError, setFetchError] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        databaseServices.getPosts([]).then((posts) => {
-            if (posts) {
-                setPosts(posts.documents)
-            }
-        })
-    }, [])
+        databaseServices.getPosts([])
+            .then((posts) => {
+                if (posts) {
+                    setPosts(posts.documents)
+                }
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.log("AllPosts:: getPost :: Error: ", err.message);
+                setFetchError(true);
+            })
+            .finally(() => setLoading(false));
+    }, []);
 
-    if (posts.length === 0) {
+
+    if (fetchError) {
         return (
             <div className='custom-h my-8 flex justify-center items-center'>
-                <p className='text-xl'>No posts yet!</p>
+                <p className='text-xl'>Error fetching posts. Please try again later.</p>
             </div>
         )
     }
 
-    return (
+    return loading ? (
+        <div className='custom-h my-8 flex justify-center items-center'>
+            <p className='text-xl'>Loading...</p>
+        </div>
+    ) : (posts.length === 0) ? (
+        <div className='custom-h my-8 flex justify-center items-center'>
+            <p className='text-xl'>No Posts Yet!</p>
+        </div>
+    ) : (
         <div className='w-full py-8'>
             <Container>
-                <div className='custom-h flex flex-wrap'>
+                <div className='custom-h grid gap-y-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                     {posts.map((post) => (
-                        <div key={post.$id} className='p-2 w-1/4'>
+                        <div key={post.$id}>
                             <PostCard {...post} />
                         </div>
-                    ))}
+                    ))
+                    }
                 </div>
             </Container>
         </div>

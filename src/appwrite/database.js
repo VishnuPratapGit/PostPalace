@@ -88,12 +88,10 @@ class DatabaseServices {
                 config.appwriteDatabaseId,
                 config.appwriteCollectionId,
                 queries,
-
-
             )
         } catch (error) {
-            console.log("Appwrite databaseServices :: getPosts :: error", error);
-            return false
+            console.log("Appwrite databaseServices :: getPosts :: error", error.message);
+            throw error
         }
     }
 
