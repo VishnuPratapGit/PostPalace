@@ -19,7 +19,7 @@ const LoginComp = () => {
             const session = await authService.login(data);
             if (session) {
                 const userData = await authService.getCurrentUser();
-                if (userData) dispatch(loginSlice(userData));
+                if (userData) dispatch(loginSlice({ userData }));
                 navigate("/");
             }
         } catch (error) {

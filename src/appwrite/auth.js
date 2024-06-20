@@ -40,8 +40,8 @@ class AuthServices {
             return await this.account.get();
         } catch (error) {
             console.log("Appwrite Service :: getCurrentUser :: error:", error.message);
+            return null;
         }
-        return null;
     }
 
     async logout() {

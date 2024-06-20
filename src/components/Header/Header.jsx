@@ -25,8 +25,8 @@ function Header() {
             active: !authStatus,
         },
         {
-            name: "All Posts",
-            slug: "/all-posts",
+            name: "My Posts",
+            slug: "/my-posts",
             active: authStatus,
         },
         {
@@ -40,9 +40,9 @@ function Header() {
     return (
         <nav className='navbar px-20 py-4 border-b border-zinc-700'>
             <div className="header-logo">
-                <Logo className=" w-40" />
+                <Logo className=" max-w-40" background="white" />
             </div>
-            <div className="flex gap-44">
+            <div className="flex justify-between items-center w-3/5 overflow-hidden p-1">
                 {navItems.map((links) => links.active ? (
                     <NavLink
                         key={links.name}

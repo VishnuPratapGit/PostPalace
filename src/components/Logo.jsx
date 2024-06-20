@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Logo({ className = "" }) {
+function Logo({ className = "", background = "transparent" }) {
     return (
         <div className={`${className}`}>
-            <img src='icon.svg' alt='Logo' />
+            <img className={`bg-${background}`} src='icon.svg' alt='Logo' />
         </div>
 
     )

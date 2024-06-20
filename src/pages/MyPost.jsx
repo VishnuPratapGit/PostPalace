@@ -1,40 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import { Container, PostCard } from '../components'
-import databaseServices from '../appwrite/database';
+import databaseServices from '../appwrite/database'
+import { Query } from 'appwrite';
 import { useSelector } from 'react-redux';
 
-function Home() {
+const MyPost = () => {
     const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(null);
     const [fetchError, setFetchError] = useState(false);
-    const userLogin = useSelector((state) => state.auth.status);
+    const [loading, setLoading] = useState(true);
+    const userId = useSelector(state => state.auth.userData?.$id);
 
     useEffect(() => {
-        if (userLogin) {
-            setLoading(true);
-            databaseServices.getPosts()
+        if (userId) {
+            databaseServices.getPosts([Query.equal("userId", userId)])
                 .then((posts) => {
                     if (posts) {
                         setPosts(posts.documents)
                     }
                     setLoading(false);
                 })
-                .catch(() => {
+                .catch((err) => {
                     console.log("AllPosts:: getPost :: Error: ", err.message);
                     setFetchError(true);
                 })
                 .finally(() => setLoading(false));
+        } else {
+            setLoading(false);
+            setFetchError(true);
         }
-    }, [])
+    }, []);
 
-
-    if (!userLogin) {
-        return (
-            <div className='custom-h my-8 flex justify-center items-center'>
-                <p className='text-xl'>Login to get posts</p>
-            </div>
-        )
-    }
 
     if (fetchError) {
         return (
@@ -60,11 +55,12 @@ function Home() {
                         <div key={post.$id}>
                             <PostCard {...post} />
                         </div>
-                    ))}
+                    ))
+                    }
                 </div>
             </Container>
         </div>
     )
 }
 
-export default Home
+export default MyPost

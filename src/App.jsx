@@ -15,11 +15,17 @@ function App() {
   useEffect(() => {
     authService.getCurrentUser()
       .then((userData) => {
-        if (userData) dispatch(login({ userData }))
-        else dispatch(logout())
+        if (userData) {
+          dispatch(login({ userData }));
+        } else {
+          dispatch(logout());
+        }
       })
-      .finally(() => setLoading(false))
-  })
+      .catch(() => {
+        dispatch(logout());
+      })
+      .finally(() => setLoading(false));
+  }, [dispatch]);
 
   return (
     <div className='min-h-screen flex flex-wrap content-between bg-zinc-900'>
