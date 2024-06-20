@@ -7,12 +7,12 @@
     position: fixed;
     z-index: 99;
     width: 100%;
-    background: rgba(244, 244, 244, 0.016);
+    background: rgba(244, 244, 244, 0.02);
     border-bottom: 1px solid rgba(255, 255, 255, 0.381);
     font-size: 18px;
     font-family: Calibri, sans-serif;
     letter-spacing: 1px;
     align-items: center;
     justify-content: space-between;
-    backdrop-filter: blur(.5rem);
+    backdrop-filter: blur(.6rem);
 }
