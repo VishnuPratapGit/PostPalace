@@ -31,7 +31,7 @@ button {
 }
 
 button:hover {
-    border-color: #646cff;
+    border-color: ghostwhite;
 }
 
 button:focus,
