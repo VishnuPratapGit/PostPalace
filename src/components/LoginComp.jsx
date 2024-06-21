@@ -10,11 +10,14 @@ const LoginComp = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { register, handleSubmit, formState } = useForm();
+    const [loading, setLoading] = useState(false);
     const [authError, setAuthError] = useState("");
     const { errors } = formState;
 
     const login = async (data) => {
         setAuthError("");
+        setLoading(true);
+
         try {
             const session = await authService.login(data);
             if (session) {
@@ -24,6 +27,8 @@ const LoginComp = () => {
             }
         } catch (error) {
             setAuthError(error.message);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -68,6 +73,12 @@ const LoginComp = () => {
                                 required: true,
                             })}
                         />
+
+                        {/* LOADER */}
+                        <div className='p-2 text-center'>
+                            {loading && <div className="loader text-lg font-semibold text-black">Loading...</div>}
+                        </div>
+
                         <Button
                             type="submit"
                             className="w-full"

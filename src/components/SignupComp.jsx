@@ -11,10 +11,13 @@ const SignupComp = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState } = useForm();
   const [authError, setAuthError] = useState("");
+  const [loading, setLoading] = useState(false);
   const { errors } = formState;
 
   const registerUser = async (data) => {
     setAuthError("");
+    setLoading(true);
+
     try {
       const session = await authService.createAccount(data);
       if (session) {
@@ -24,6 +27,8 @@ const SignupComp = () => {
       }
     } catch (error) {
       setAuthError(error.message);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -81,6 +86,12 @@ const SignupComp = () => {
                 required: true,
               })}
             />
+
+            {/* LOADER */}
+            <div className='p-2 text-center'>
+              {loading && <div className="loader text-lg font-semibold text-black">Loading...</div>}
+            </div>
+
             <Button type="submit" className="w-full">
               Create Account
             </Button>
