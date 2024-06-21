@@ -47,25 +47,27 @@ export default function Post() {
     return post ? (
         <div className="py-8 px-20">
             <Container>
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
-                    <img
-                        src={databaseServices.getFilePreview(post.featuredImage)}
-                        alt={post.title}
-                        className="rounded-xl"
-                    />
+                <div className="flex justify-center">
+                    <div className="w-4/5 flex justify-center mb-4 relative border border-zinc-700 rounded-2xl">
+                        <img
+                            src={databaseServices.getFilePreview(post.featuredImage)}
+                            alt={post.title}
+                            className="post-img rounded-2xl"
+                        />
 
-                    {isAuthor && (
-                        <div className="absolute right-6 top-6">
-                            <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="mr-3">
-                                    Edit
+                        {isAuthor && (
+                            <div className="absolute right-6 top-6">
+                                <Link to={`/edit-post/${post.$id}`}>
+                                    <Button bgColor="bg-green-500" className="mr-1 px-1.5 py-0.5 rounded-md">
+                                        Edit
+                                    </Button>
+                                </Link>
+                                <Button bgColor="bg-red-500" className="px-1.5 py-0.5 rounded-md" onClick={deletePost}>
+                                    Delete
                                 </Button>
-                            </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost}>
-                                Delete
-                            </Button>
-                        </div>
-                    )}
+                            </div>
+                        )}
+                    </div>
                 </div>
 
                 {/* CONTENT */}

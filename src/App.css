@@ -15,3 +15,7 @@ body {
 .custom-h {
   min-height: 80vh;
 }
+
+.post-img {
+  max-height: 36rem;
+}
