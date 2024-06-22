@@ -79,7 +79,7 @@ const PostForm = ({ post }) => {
 
     return (
         <form onSubmit={handleSubmit(submitForm)} className="flex flex-wrap gap-20 text-white">
-            <div className="w-3/5 px-2">
+            <div className="w-full xl:w-3/5 px-2">
                 <Input
                     label="Title :"
                     color="white"
@@ -99,7 +99,7 @@ const PostForm = ({ post }) => {
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             </div>
-            <div className="w-1/3 px-2">
+            <div className="w-full xl:w-1/3 px-2">
                 <Input
                     label="Featured Image :"
                     color="white"
