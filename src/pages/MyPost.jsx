@@ -45,7 +45,7 @@ const MyPost = () => {
                 <div className='custom-h grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                     {Array.from({ length: 8 }).map((_, index) => (
                         <div key={index}>
-                            <Skeleton height={250} />
+                            <Skeleton height={250} className='sm:rounded-2xl' />
                         </div>
                     ))}
                 </div>

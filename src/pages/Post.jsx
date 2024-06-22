@@ -48,7 +48,7 @@ export default function Post() {
         <div className="py-8 px-5 sm:px-20">
             <Container>
                 <div className="flex justify-center">
-                    <div className="w-full sm:w-4/5 flex justify-center mb-4 relative border border-zinc-700 rounded-2xl">
+                    <div className="w-full shadow-inner sm:w-4/5 flex justify-center mb-4 relative rounded-2xl">
                         <img
                             src={databaseServices.getFilePreview(post.featuredImage)}
                             alt={post.title}
@@ -77,8 +77,8 @@ export default function Post() {
                         <h1 className="text-4xl font-bold mt-5 py-5">{post.title}</h1>
                         <p className="text-xl pb-8 border-b border-b-zinc-700">{createdAt}</p>
                     </div>
-                    <div className="browser-css font-medium text-xl break-words">
-                        {parse(post.content)}
+                    <div className="rte-content font-medium break-words prose prose-sm lg:prose-lg dark:prose-invert prose-strong:text-inherit max-w-none">
+                        {parse(post.content)} {console.log(post.content)}
                     </div>
                 </div>
             </Container>
