@@ -45,10 +45,10 @@ export default function Post() {
 
 
     return post ? (
-        <div className="py-8 px-20">
+        <div className="py-8 px-5 sm:px-20">
             <Container>
                 <div className="flex justify-center">
-                    <div className="w-4/5 flex justify-center mb-4 relative border border-zinc-700 rounded-2xl">
+                    <div className="w-full sm:w-4/5 flex justify-center mb-4 relative border border-zinc-700 rounded-2xl">
                         <img
                             src={databaseServices.getFilePreview(post.featuredImage)}
                             alt={post.title}
@@ -56,13 +56,14 @@ export default function Post() {
                         />
 
                         {isAuthor && (
-                            <div className="absolute right-6 top-6">
+                            <div className="absolute top-2 right-2 sm:right-6 sm:top-6">
                                 <Link to={`/edit-post/${post.$id}`}>
-                                    <Button bgColor="bg-green-500" className="mr-1 px-1.5 py-0.5 rounded-md">
+                                    <Button bgColor="bg-green-500" className="text-xs sm:text-base mr-1 px-1.5 py-0.5 rounded-md">
                                         Edit
                                     </Button>
                                 </Link>
-                                <Button bgColor="bg-red-500" className="px-1.5 py-0.5 rounded-md" onClick={deletePost}>
+
+                                <Button bgColor="bg-red-500" className="text-xs sm:text-base px-1.5 py-0.5 rounded-md" onClick={deletePost}>
                                     Delete
                                 </Button>
                             </div>
@@ -71,12 +72,12 @@ export default function Post() {
                 </div>
 
                 {/* CONTENT */}
-                <div className="text-stone-300">
+                <div className="text-stone-300 overflow-hidden">
                     <div className="w-full mb-6">
                         <h1 className="text-4xl font-bold mt-5 py-5">{post.title}</h1>
                         <p className="text-xl pb-8 border-b border-b-zinc-700">{createdAt}</p>
                     </div>
-                    <div className="browser-css font-medium text-xl">
+                    <div className="browser-css font-medium text-xl break-words">
                         {parse(post.content)}
                     </div>
                 </div>

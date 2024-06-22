@@ -11,7 +11,7 @@ import './App.css'
 
 
 function App() {
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
@@ -31,17 +31,17 @@ function App() {
   }, [dispatch]);
 
   const toggleHeaderVisibility = () => {
-    setIsHeaderVisible(!isHeaderVisible); // Toggle header visibility
+    setIsHeaderVisible(!isHeaderVisible);
   };
 
   return (
     <div className='min-h-screen flex flex-wrap content-between bg-zinc-950'>
       <div className='w-full block'>
-        <div className='fixed z-50 top-5 left-4 text-3xl block sm:hidden' onClick={toggleHeaderVisibility}>
+        <div className='fixed rounded-full p-3 bg-zinc-700 z-50 top-5 left-4 text-2xl block sm:hidden' onClick={toggleHeaderVisibility}>
           {isHeaderVisible ? <RxCross1 /> : <RxHamburgerMenu />}
         </div>
         <Header isVisible={isHeaderVisible} />
-        <main className='pt-20'>
+        <main className='sm:pt-20'>
           {loading ?
             <div className='custom-h my-8 flex justify-center items-center'>
               <PreLoader type="bars" color="gray" height={60} width={60} />
@@ -50,7 +50,7 @@ function App() {
         <Footer />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
