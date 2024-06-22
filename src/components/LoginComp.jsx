@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Input, Logo } from "./index"
+import { Button, Input, Logo, PreLoader } from "./index"
 import { Link, useNavigate } from 'react-router-dom';
 import { login as loginSlice } from '../context/authSlice';
 import authService from '../appwrite/auth'
@@ -35,7 +35,7 @@ const LoginComp = () => {
 
     return (
         <div className='flex items-center justify-center custom-h w-full'>
-            <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
+            <div className={`mx-auto w-full max-w-md bg-gray-100 p-3 border border-black/10 sm:rounded-xl md:rounded-xl lg:rounded-xl sm:p-10 md:p-10 lg:p-10`}>
 
                 {/* UPPER PART */}
 
@@ -75,8 +75,8 @@ const LoginComp = () => {
                         />
 
                         {/* LOADER */}
-                        <div className='p-2 text-center'>
-                            {loading && <div className="loader text-lg font-semibold text-black">Loading...</div>}
+                        <div className='p-2 flex justify-center'>
+                            {loading && <PreLoader type="spin" color="gray" />}
                         </div>
 
                         <Button

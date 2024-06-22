@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { Logo, LogoutBtn } from '../index'
 
 
-function Header() {
+function Header({ isVisible }) {
     const authStatus = useSelector((state) => state.auth.status);
 
     const navItems = [
@@ -38,11 +38,11 @@ function Header() {
 
 
     return (
-        <nav className='navbar px-20 py-4 border-b border-zinc-700'>
-            <div className="header-logo">
+        <nav className={`navbar w-6/12 sm:w-full h-screen sm:h-20 sm:px-10 lg:px-20 py-4 sm:border-b border-zinc-700 transition-all duration-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full'}`}>
+            <div className="header-logo rounded-md overflow-hidden hidden sm:block">
                 <Logo className="max-w-40" background="white" />
             </div>
-            <div className="flex justify-between items-center w-3/5 overflow-hidden p-1">
+            <div className="flex flex-col justify-between items-center h-1/2 sm:h-full w-full sm:w-3/5 overflow-hidden p-1 sm:flex-row">
                 {navItems.map((links) => links.active ? (
                     <NavLink
                         key={links.name}

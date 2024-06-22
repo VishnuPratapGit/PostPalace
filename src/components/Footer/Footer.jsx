@@ -9,8 +9,8 @@ function Footer() {
                 <div className="-m-6 flex flex-wrap">
                     <div className="w-full p-6 md:w-1/2 lg:w-5/12">
                         <div className="flex h-full flex-col justify-between">
-                            <div className="mb-4 inline-flex items-center">
-                                <Logo className='w-72' />
+                            <div className="mb-4 w-min inline-flex overflow-hidden items-center rounded-lg">
+                                <Logo className='w-72' background='white' />
                             </div>
                             <div>
                                 <p className="text-sm text-gray-300">
