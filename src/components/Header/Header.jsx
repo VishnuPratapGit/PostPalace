@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { Logo, LogoutBtn } from '../index'
 
 
-function Header() {
+function Header({ isVisible }) {
     const authStatus = useSelector((state) => state.auth.status);
 
     const navItems = [
@@ -38,16 +38,16 @@ function Header() {
 
 
     return (
-        <nav className='navbar px-20 py-4 border-b border-zinc-700'>
-            <div className="header-logo">
-                <Logo className=" max-w-40" background="white" />
+        <nav className={`navbar w-4/5 sm:w-full h-screen overflow-hidden sm:h-20 sm:px-10 lg:px-20 py-4 sm:border-b border-zinc-700 transition-all duration-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full sm:opacity-100 sm:translate-x-0'}`}>
+            <div className="text-3xl font-semibold hidden sm:block">
+                <i className="fa-solid fa-pen-nib fa-xl fa-fade"></i>PostPalace
             </div>
-            <div className="flex justify-between items-center w-3/5 overflow-hidden p-1">
-                {navItems.map((links) => links.active ? (
+            <div className="flex flex-col justify-between items-center h-1/2 sm:h-full w-full sm:w-3/5 overflow-hidden p-1 sm:flex-row">
+                {navItems.map((link) => link.active ? (
                     <NavLink
-                        key={links.name}
+                        key={link.name}
                         className={({ isActive }) => isActive ? "active" : ""}
-                        to={links.slug}>{links.name}
+                        to={link.slug}>{link.name}
                     </NavLink>
                 ) : null)}
                 {authStatus && <LogoutBtn />}

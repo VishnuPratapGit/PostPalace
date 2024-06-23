@@ -18,7 +18,6 @@ export default function RTE({ name, control, label, defaultValue = "" }) {
                         initialValue={defaultValue}
                         init={{
                             initialValue: defaultValue,
-                            height: 400,
                             menubar: true,
                             plugins: [
                                 "image",
@@ -43,7 +42,7 @@ export default function RTE({ name, control, label, defaultValue = "" }) {
                                 "anchor",
                             ],
                             toolbar:
-                                "undo redo | blocks | image | bold italic forecolor | alignleft aligncenter bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help",
+                                "undo redo | fontsize | link image table | forecolor backcolor | bold italic underline align | strikethrough lineheight | checklist numlist bullist indent outdent | blocks fontfamily | emoticons charmap | removeformat | help",
                             content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }"
                         }}
                         onEditorChange={onChange}

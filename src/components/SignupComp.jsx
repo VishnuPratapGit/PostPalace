@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Input, Logo } from "./index"
+import { Button, Input, Logo, PreLoader } from "./index"
 import { Link, useNavigate } from 'react-router-dom';
 import { login as loginSlice } from '../context/authSlice';
 import authService from '../appwrite/auth'
@@ -11,10 +11,13 @@ const SignupComp = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState } = useForm();
   const [authError, setAuthError] = useState("");
+  const [loading, setLoading] = useState(false);
   const { errors } = formState;
 
   const registerUser = async (data) => {
     setAuthError("");
+    setLoading(true);
+
     try {
       const session = await authService.createAccount(data);
       if (session) {
@@ -24,12 +27,14 @@ const SignupComp = () => {
       }
     } catch (error) {
       setAuthError(error.message);
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
     <div className="flex items-center justify-center custom-h">
-      <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
+      <div className={`mx-auto w-full max-w-md sm:rounded-xl md:rounded-xl lg:rounded-xl bg-gray-100 p-3 border border-black/10 sm:p-10 md:p-10 lg:p-10`}>
 
         {/* UPPER PART */}
 
@@ -81,6 +86,12 @@ const SignupComp = () => {
                 required: true,
               })}
             />
+
+            {/* LOADER */}
+            <div className='p-2 flex justify-center items-center'>
+              {loading && <PreLoader type="spin" color="gray" />}
+            </div>
+
             <Button type="submit" className="w-full">
               Create Account
             </Button>

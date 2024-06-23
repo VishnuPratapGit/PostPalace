@@ -12,6 +12,9 @@ import LoginComp from "./LoginComp"
 import SignupComp from "./SignupComp"
 import RTE from "./RTE"
 import PostForm from "./PostForm/PostForm"
+import PreLoader from "./PreLoader"
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export {
     Container,
@@ -27,5 +30,7 @@ export {
     LoginComp,
     SignupComp,
     RTE,
-    PostForm
+    PostForm,
+    PreLoader,
+    Skeleton
 }

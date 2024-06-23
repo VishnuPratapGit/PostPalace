@@ -4,13 +4,13 @@ import Logo from '../Logo'
 
 function Footer() {
     return (
-        <section className="mt-2 relative overflow-hidden py-10 bg-zinc-900 border-t border-t-zinc-700">
+        <section className="hidden sm:block mt-2 relative overflow-hidden py-10 border-t border-t-zinc-700">
             <div className="relative z-10 mx-auto max-w-7xl px-4">
                 <div className="-m-6 flex flex-wrap">
                     <div className="w-full p-6 md:w-1/2 lg:w-5/12">
                         <div className="flex h-full flex-col justify-between">
-                            <div className="mb-4 inline-flex items-center">
-                                <Logo className='w-72' />
+                            <div className="mb-4 w-max rounded-lg overflow-hidden">
+                                <Logo className='w-72 bg-gray-100' />
                             </div>
                             <div>
                                 <p className="text-sm text-gray-300">

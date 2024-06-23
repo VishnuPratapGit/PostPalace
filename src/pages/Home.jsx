@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, PostCard } from '../components'
+import { Container, PostCard, Skeleton } from '../components'
 import databaseServices from '../appwrite/database';
 import { useSelector } from 'react-redux';
 
@@ -45,15 +45,23 @@ function Home() {
     }
 
     return loading ? (
-        <div className='custom-h my-8 flex justify-center items-center'>
-            <p className='text-xl'>Loading...</p>
+        <div className='w-full sm:py-8'>
+            <Container>
+                <div className='custom-h grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+                    {Array.from({ length: 8 }).map((_, index) => (
+                        <div key={index}>
+                            <Skeleton height={250} className='sm:rounded-2xl' />
+                        </div>
+                    ))}
+                </div>
+            </Container>
         </div>
     ) : (posts.length === 0) ? (
         <div className='custom-h my-8 flex justify-center items-center'>
             <p className='text-xl'>No Posts Yet!</p>
         </div>
     ) : (
-        <div className='w-full py-8'>
+        <div className='w-full sm:py-8'>
             <Container>
                 <div className='custom-h grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                     {posts.map((post) => (

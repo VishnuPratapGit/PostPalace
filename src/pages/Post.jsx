@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import databaseServices from "../appwrite/database";
-import { Button, Container } from "../components";
+import { Button, Container, PreLoader } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 
@@ -45,40 +45,46 @@ export default function Post() {
 
 
     return post ? (
-        <div className="py-8 px-20">
+        <div className="py-8 px-5 sm:px-20">
             <Container>
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
-                    <img
-                        src={databaseServices.getFilePreview(post.featuredImage)}
-                        alt={post.title}
-                        className="rounded-xl"
-                    />
+                <div className="flex justify-center">
+                    <div className="w-full shadow-inner sm:w-4/5 flex justify-center mb-4 relative rounded-2xl">
+                        <img
+                            src={databaseServices.getFilePreview(post.featuredImage)}
+                            alt={post.title}
+                            className="post-img rounded-2xl"
+                        />
 
-                    {isAuthor && (
-                        <div className="absolute right-6 top-6">
-                            <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="mr-3">
-                                    Edit
+                        {isAuthor && (
+                            <div className="absolute top-2 right-2 sm:right-6 sm:top-6">
+                                <Link to={`/edit-post/${post.$id}`}>
+                                    <Button bgColor="bg-green-600" className="text-xs sm:text-base mr-2 px-1.5 py-0.5 rounded-md">
+                                        <i class="fa-solid fa-file-pen"></i>
+                                    </Button>
+                                </Link>
+
+                                <Button bgColor="bg-red-600" className="text-xs sm:text-base px-1.5 py-0.5 rounded-md" onClick={deletePost}>
+                                    <i class="fa-solid fa-trash-can"></i>
                                 </Button>
-                            </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost}>
-                                Delete
-                            </Button>
-                        </div>
-                    )}
+                            </div>
+                        )}
+                    </div>
                 </div>
 
                 {/* CONTENT */}
-                <div className="text-stone-300">
+                <div className="text-stone-300 overflow-hidden">
                     <div className="w-full mb-6">
                         <h1 className="text-4xl font-bold mt-5 py-5">{post.title}</h1>
                         <p className="text-xl pb-8 border-b border-b-zinc-700">{createdAt}</p>
                     </div>
-                    <div className="browser-css font-medium text-xl">
+                    <div className="rte-content font-medium break-words prose lg:prose-lg dark:prose-invert prose-strong:text-inherit max-w-none text-justify">
                         {parse(post.content)}
                     </div>
                 </div>
             </Container>
         </div>
-    ) : null;
+    ) : (<div className="custom-h my-8 flex justify-center items-center">
+        <PreLoader type="bars" color="gray" height={60} width={60} />
+    </div>
+    );
 }

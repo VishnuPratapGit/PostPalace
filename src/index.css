@@ -15,6 +15,11 @@
     border-radius: 5px;
 }
 
+:root {
+    color: ghostwhite;
+    background-color: rgb(0, 0, 0);
+}
+
 a {
     font-weight: 500;
     text-decoration: inherit;
@@ -47,22 +52,55 @@ button:hover {
     border-color: ghostwhite;
 }
 
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+button:active {
+    background-color: #ffeaf0;
+    color: black
 }
 
 @media (prefers-color-scheme: light) {
+
     :root {
         color: #213547;
         background-color: #ffffff;
+    }
+
+    * {
+        color: black;
     }
 
     a:hover {
         color: #747bff;
     }
 
+    a {
+        color: black !important;
+    }
+
+    label {
+        color: black !important;
+    }
+
     button {
         background-color: #f9f9f9;
+        color: black
+    }
+
+    button:hover {
+        border-color: #ff3f75;
+    }
+
+    button:active {
+        background-color: black;
+        color: white;
+    }
+
+    h1,
+    h2,
+    h3 {
+        color: black !important;
+    }
+
+    p {
+        color: black !important;
     }
 }
