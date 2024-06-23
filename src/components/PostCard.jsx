@@ -2,7 +2,7 @@ import React from 'react'
 import databaseService from '../appwrite/database'
 import { Link } from 'react-router-dom'
 
-function PostCard({ $id, title, featuredImage }) {
+function PostCard({ $id, title, featuredImage, userName }) {
     return (
         <Link to={`/post/${$id}`}>
             <div className='post-card w-full h-min mb-5 overflow-hidden bg-red transition-all duration-300 sm:hover:scale-105 sm:rounded-2xl'>
@@ -18,7 +18,7 @@ function PostCard({ $id, title, featuredImage }) {
                         {title}
                     </h2>
                     <h2 className='text-xs text-zinc-100 font-semibold overflow-hidden whitespace-nowrap text-ellipsis'>
-                        ChannelName
+                        {userName}
                     </h2>
                 </div>
             </div>

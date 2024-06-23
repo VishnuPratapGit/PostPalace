@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import databaseServices from '../../appwrite/database'
 
 const PostForm = ({ post }) => {
+    const navigate = useNavigate();
+    const userData = useSelector((state) => state.auth.userData);
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
             title: post?.title || "",
@@ -14,47 +16,47 @@ const PostForm = ({ post }) => {
             status: post?.status || "active",
         }
     });
-    const navigate = useNavigate();
-    const userData = useSelector((state) => state.auth.userData);
 
     const submitForm = async (data) => {
         if (post) {
-            // first update and delete image from appwrite storage
+            // If updating a post
             const file = data.image[0] ? await databaseServices.uploadFile(data.image[0]) : null;
             if (file) {
                 databaseServices.deleteFile(post.featuredImage);
             }
 
-            //then update post with new image by change featured image id
-            const updatedPost = await databaseServices.updatePost(post.$id, {
+            const updatedPostData = {
                 ...data,
                 featuredImage: file ? file.$id : post.featuredImage,
-            });
+            };
 
+            const updatedPost = await databaseServices.updatePost(post.$id, updatedPostData);
             if (updatedPost) {
                 navigate(`/post/${updatedPost.$id}`);
             }
         } else {
-            // upload file to appwrite bucketStorage
+            // If creating a new post
             const file = data.image[0] ? await databaseServices.uploadFile(data.image[0]) : null;
 
             if (file) {
                 const fileId = file.$id;
-                data.featuredImage = fileId;
-                const userId = userData.$id;
-
-                // create new post in appwrite database
-                const newPost = await databaseServices.createPost({
+                const newPostData = {
                     ...data,
-                    userId
-                })
+                    featuredImage: fileId,
+                    userId: userData.$id,
+                    userName: userData.name
+                };
 
+                const newPost = await databaseServices.createPost(newPostData);
                 if (newPost) {
                     navigate(`/post/${newPost.$id}`);
                 }
+            } else {
+                console.log("Featured image not provided");
             }
         }
     }
+
 
     const slugTransform = useCallback((value) => {
         if (value && typeof value === "string") {
