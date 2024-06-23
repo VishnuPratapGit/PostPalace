@@ -77,8 +77,8 @@ export default function Post() {
                         <h1 className="text-4xl font-bold mt-5 py-5">{post.title}</h1>
                         <p className="text-xl pb-8 border-b border-b-zinc-700">{createdAt}</p>
                     </div>
-                    <div className="rte-content font-medium break-words prose lg:prose-lg dark:prose-invert prose-strong:text-inherit max-w-none">
-                        {parse(post.content)} {console.log(post.content)}
+                    <div className="rte-content font-medium break-words prose lg:prose-lg dark:prose-invert prose-strong:text-inherit max-w-none text-justify">
+                        {parse(post.content)}
                     </div>
                 </div>
             </Container>
