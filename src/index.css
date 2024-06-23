@@ -73,11 +73,34 @@ button:active {
     }
 
     a {
-        color: black;
+        color: black !important;
+    }
+
+    label {
+        color: black !important;
     }
 
     button {
         background-color: #f9f9f9;
         color: black
+    }
+
+    button:hover {
+        border-color: #ff3f75;
+    }
+
+    button:active {
+        background-color: black;
+        color: white;
+    }
+
+    h1,
+    h2,
+    h3 {
+        color: black !important;
+    }
+
+    p {
+        color: black !important;
     }
 }

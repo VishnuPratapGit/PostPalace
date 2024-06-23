@@ -8,10 +8,6 @@
   padding: 0rem;
 }
 
-/* body {
-  background-color: rgb(24 24 27);
-} */
-
 .custom-h {
   min-height: 80vh;
 }
@@ -23,7 +19,7 @@
 .post-card {
   animation: appear linear;
   animation-timeline: view();
-  animation-range: entry cover 34%;
+  animation-range: entry cover 30%;
 }
 
 
