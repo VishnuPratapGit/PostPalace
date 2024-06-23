@@ -38,9 +38,9 @@ function Header({ isVisible }) {
 
 
     return (
-        <nav className={`navbar w-4/5 sm:w-full h-screen sm:h-20 sm:px-10 lg:px-20 py-4 sm:border-b border-zinc-700 transition-all duration-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full sm:opacity-100 sm:translate-x-0'}`}>
-            <div className="text-3xl p-1 font-semibold bg-gray-200 text-black rounded-md overflow-hidden hidden sm:block">
-                PostPalace
+        <nav className={`navbar w-4/5 sm:w-full h-screen overflow-hidden sm:h-20 sm:px-10 lg:px-20 py-4 sm:border-b border-zinc-700 transition-all duration-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full sm:opacity-100 sm:translate-x-0'}`}>
+            <div className="text-3xl font-semibold hidden sm:block">
+                <i className="fa-solid fa-pen-nib fa-xl fa-fade"></i>PostPalace
             </div>
             <div className="flex flex-col justify-between items-center h-1/2 sm:h-full w-full sm:w-3/5 overflow-hidden p-1 sm:flex-row">
                 {navItems.map((link) => link.active ? (
