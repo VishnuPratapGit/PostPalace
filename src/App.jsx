@@ -35,7 +35,7 @@ function App() {
   };
 
   return (
-    <div className='min-h-screen flex flex-wrap content-between bg-zinc-950'>
+    <div className='min-h-screen flex flex-wrap content-between'>
       <div className='w-full block'>
         <div className='fixed rounded-full p-3 bg-zinc-700 z-50 top-5 left-4 text-2xl block sm:hidden' onClick={toggleHeaderVisibility}>
           {isHeaderVisible ? <RxCross1 /> : <RxHamburgerMenu />}
@@ -43,7 +43,7 @@ function App() {
         <Header isVisible={isHeaderVisible} />
         <main className='sm:pt-20'>
           {loading ?
-            <div className='custom-h my-8 flex justify-center items-center'>
+            <div className='my-8 custom-h flex justify-center items-center'>
               <PreLoader type="bars" color="gray" height={60} width={60} />
             </div> : <Outlet />}
         </main>

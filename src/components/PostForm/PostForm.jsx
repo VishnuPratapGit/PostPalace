@@ -97,8 +97,14 @@ const PostForm = ({ post }) => {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
                     }}
                 />
-                <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
+                <div>
+                    <label className='inline-block mb-1 pl-1'>Content :</label>
+                    <div className='min-h-96 h-min bg-white rounded-md'>
+                        <RTE name="content" control={control} defaultValue={getValues("content")} />
+                    </div>
+                </div>
             </div>
+
             <div className="w-full xl:w-1/3 px-2">
                 <Input
                     label="Featured Image :"

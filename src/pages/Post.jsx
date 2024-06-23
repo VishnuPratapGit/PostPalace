@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import databaseServices from "../appwrite/database";
-import { Button, Container } from "../components";
+import { Button, Container, PreLoader } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 
@@ -77,11 +77,14 @@ export default function Post() {
                         <h1 className="text-4xl font-bold mt-5 py-5">{post.title}</h1>
                         <p className="text-xl pb-8 border-b border-b-zinc-700">{createdAt}</p>
                     </div>
-                    <div className="rte-content font-medium break-words prose prose-sm lg:prose-lg dark:prose-invert prose-strong:text-inherit max-w-none">
+                    <div className="rte-content font-medium break-words prose lg:prose-lg dark:prose-invert prose-strong:text-inherit max-w-none">
                         {parse(post.content)} {console.log(post.content)}
                     </div>
                 </div>
             </Container>
         </div>
-    ) : null;
+    ) : (<div className="custom-h my-8 flex justify-center items-center">
+        <PreLoader type="bars" color="gray" height={60} width={60} />
+    </div>
+    );
 }
