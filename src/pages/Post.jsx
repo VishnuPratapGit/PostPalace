@@ -11,7 +11,7 @@ export default function Post() {
     const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData);
     const isAuthor = post && userData ? post.userId === userData.$id : false;
-    const [createdAt, setCreatedAt] = useState("")
+    const [updatedAt, setUpdatedAt] = useState("")
 
 
     useEffect(() => {
@@ -21,12 +21,12 @@ export default function Post() {
                     setPost(post);
 
                     //extract date
-                    const formattedDate = new Date(post.$createdAt).toLocaleDateString('en-US', {
+                    const formattedDate = new Date(post.$updatedAt).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric'
                     });
-                    setCreatedAt(formattedDate)
+                    setUpdatedAt(formattedDate)
                 }
                 else navigate("/");
             });
@@ -45,7 +45,7 @@ export default function Post() {
 
 
     return post ? (
-        <div className="py-8 px-5 sm:px-20">
+        <div className="py-4 sm:py-8 px-5 sm:px-20">
             <Container>
                 <div className="flex justify-center">
                     <div className="w-full shadow-inner sm:w-4/5 flex justify-center mb-4 relative rounded-2xl">
@@ -59,7 +59,7 @@ export default function Post() {
                             <div className="absolute top-2 right-2 sm:right-6 sm:top-6">
                                 <Link to={`/edit-post/${post.$id}`}>
                                     <Button bgColor="bg-green-600" className="text-xs sm:text-base mr-2 px-1.5 py-0.5 rounded-md">
-                                        <i class="fa-solid fa-file-pen"></i>
+                                        <i className="fa-solid fa-file-pen"></i>
                                     </Button>
                                 </Link>
 
@@ -74,10 +74,10 @@ export default function Post() {
                 {/* CONTENT */}
                 <div className="text-stone-300 overflow-hidden">
                     <div className="w-full mb-6">
-                        <h1 className="text-4xl font-bold mt-5 py-5">{post.title}</h1>
-                        <p className="text-xl pb-8 border-b border-b-zinc-700">{createdAt}</p>
+                        <h1 className="text-2xl font-ibm lg:text-4xl font-bold mt-5 py-5">{post.title}</h1>
+                        <h2 className="lg:text-lg font-semibold text-stone-400 pb-8 border-b border-b-zinc-700">Last Updated : {updatedAt}</h2>
                     </div>
-                    <div className="rte-content font-medium break-words prose lg:prose-lg dark:prose-invert prose-strong:text-inherit max-w-none text-justify">
+                    <div className="rte-content prose font-semibold letter-spacing lg:prose-xl dark:prose-invert prose-strong:text-inherit max-w-none text-justify prose-headings:text-left">
                         {parse(post.content)}
                     </div>
                 </div>

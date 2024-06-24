@@ -40,7 +40,7 @@ const MyPost = () => {
     }
 
     return loading ? (
-        <div className='w-full py-8'>
+        <div className='w-full sm:py-8'>
             <Container>
                 <div className='custom-h grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                     {Array.from({ length: 8 }).map((_, index) => (
@@ -56,7 +56,7 @@ const MyPost = () => {
             <p className='text-xl'>No Posts Yet!</p>
         </div>
     ) : (
-        <div className='w-full py-8'>
+        <div className='w-full sm:py-8'>
             <Container>
                 <div className='custom-h grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                     {posts.map((post) => (

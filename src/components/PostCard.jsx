@@ -14,10 +14,10 @@ function PostCard({ $id, title, featuredImage, userName }) {
                     />
                 </div>
                 <div className="p-2 px-4">
-                    <h2 className='text-zinc-100 font-semibold overflow-hidden whitespace-nowrap text-ellipsis'>
+                    <h2 className='text-zinc-100 font-ibm font-semibold overflow-hidden whitespace-nowrap text-ellipsis'>
                         {title}
                     </h2>
-                    <h2 className='text-zinc-300 overflow-hidden whitespace-nowrap text-ellipsis'>
+                    <h2 className='text-stone-400 font-ibm overflow-hidden whitespace-nowrap text-ellipsis'>
                         {userName}
                     </h2>
                 </div>
