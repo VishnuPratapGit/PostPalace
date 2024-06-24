@@ -37,7 +37,7 @@ function App() {
   return (
     <div className='min-h-screen flex flex-wrap content-between'>
       <div className='w-full block'>
-        <div className='sticky top-0 p-3 z-50 bg-zinc-950 text-2xl block sm:hidden' onClick={toggleHeaderVisibility}>
+        <div className='text-white sticky top-0 p-3 z-50 bg-zinc-950 text-2xl block sm:hidden' onClick={toggleHeaderVisibility}>
           {isHeaderVisible ? <RxCross1 /> : <RxHamburgerMenu />}
         </div>
         <Header isVisible={isHeaderVisible} setVisible={setIsHeaderVisible} />
