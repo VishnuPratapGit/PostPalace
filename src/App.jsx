@@ -37,10 +37,10 @@ function App() {
   return (
     <div className='min-h-screen flex flex-wrap content-between'>
       <div className='w-full block'>
-        <div className='fixed rounded-full p-3 z-50 top-3 left-3 text-2xl block sm:hidden' onClick={toggleHeaderVisibility}>
-          {isHeaderVisible ? <RxCross1 style={{ mixBlendMode: "color-burn" }} /> : <RxHamburgerMenu style={{ mixBlendMode: "color-dodge" }} />}
+        <div className='text-white sticky top-0 p-3 z-50 bg-zinc-950 text-2xl block sm:hidden' onClick={toggleHeaderVisibility}>
+          {isHeaderVisible ? <RxCross1 /> : <RxHamburgerMenu />}
         </div>
-        <Header isVisible={isHeaderVisible} />
+        <Header isVisible={isHeaderVisible} setVisible={setIsHeaderVisible} />
         <main className='sm:pt-20'>
           {loading ?
             <div className='my-8 custom-h flex justify-center items-center'>

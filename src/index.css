@@ -64,34 +64,24 @@ button:active {
         background-color: #ffffff;
     }
 
-    * {
-        color: black;
-    }
-
     a:hover {
         color: #747bff;
     }
 
     a {
-        color: black !important;
+        color: black;
+    }
+
+    nav {
+        background-color: whitesmoke !important;
+    }
+
+    nav div {
+        color: black;
     }
 
     label {
         color: black !important;
-    }
-
-    button {
-        background-color: #f9f9f9;
-        color: black
-    }
-
-    button:hover {
-        border-color: #ff3f75;
-    }
-
-    button:active {
-        background-color: black;
-        color: white;
     }
 
     h1,
