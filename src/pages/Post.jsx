@@ -77,7 +77,7 @@ export default function Post() {
                         <h1 className="text-2xl font-ibm lg:text-4xl font-bold mt-5 py-5">{post.title}</h1>
                         <h2 className="lg:text-lg font-semibold text-stone-400 pb-8 border-b border-b-zinc-700">Last Updated : {updatedAt}</h2>
                     </div>
-                    <div className="rte-content prose font-semibold letter-spacing lg:prose-xl dark:prose-invert prose-strong:text-inherit max-w-none text-justify prose-headings:text-left">
+                    <div className="rte-content prose font-semibold lg:prose-xl dark:prose-invert prose-strong:text-inherit max-w-none text-justify prose-headings:text-left">
                         {parse(post.content)}
                     </div>
                 </div>
