@@ -29,6 +29,16 @@ PostPalace is a fully responsive blogging website, built using React and Appwrit
 - **Frontend:** React, Redux, Tailwind CSS
 - **Backend:** Appwrite
 - **Deployment:** Netlify
+- **Text Editor:** TinyMCE
+- **State Management:** Redux
+
+## How to upload blog
+
+- First login to upload any post.
+- Now click on add post in navbar.
+- Add Title, Image, and status ( should be active for public the post else it's private).
+- Now add content and click on submit.
+- You can update or delete your post by click on update icon in post thumbnail corner.
 
 ## Installation
 
