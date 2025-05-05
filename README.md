@@ -18,12 +18,6 @@ PostPalace is a fully responsive blogging website, built using React and Appwrit
 - Responsive design for mobile and desktop
 - Dark and light theme modes based on users device
 
-## Screenshots
-
-![Home Page](link-to-screenshot1)
-![Blog Post](link-to-screenshot2)
-![Edit Blog Page](link-to-screenshot3)
-
 ## Technologies Used
 
 - **Frontend:** React, Redux, Tailwind CSS
