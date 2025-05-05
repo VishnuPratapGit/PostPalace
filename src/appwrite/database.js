@@ -126,7 +126,7 @@ class DatabaseServices {
     }
 
     getFilePreview(fileId) {
-        return this.bucket.getFilePreview(config.appwriteBucketId, fileId)
+        return this.bucket.getFileView(config.appwriteBucketId, fileId)
     }
 }
 
