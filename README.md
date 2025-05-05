@@ -53,10 +53,9 @@ PostPalace is a fully responsive blogging website, built using React and Appwrit
 3. Install dependencies
    ```bash
    npm install
-
-4. Set up Appwrite backend (below is the link for detailed instructions)
-   - [Appwrite-Setup](https://postpalace.netlify.app)
    
-5. Start the development server
+4. Start the development server
    ```bash
-   npm start
+   npm run dev
+
+**Note** Get appwrite project URL and ID also database and bucket ID from appwrite console and put direclty in config file in src>config>config.js or use .env seperatly.
